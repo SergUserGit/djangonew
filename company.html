@@ -1,0 +1,29 @@
+{% extends "learnproject/layout.html" %}
+
+{% block body %}
+
+<h1>Company {{ company.id }} </h1>
+
+<ul>
+    <li>Name: {{ company.name }}</li>
+    <li>Description: {{ company.description }}</li>
+</ul>
+
+<h2>Add Company</h2>
+
+<form action="{% url 'recordcompany' company.id %}" method="post">
+
+    {% csrf_token %}
+    <select name="company">
+        {% for company in non_companies %}
+           <option value="{{ company.id }}">{{company}}</option>
+        {% endfor %}
+    </select>
+
+    <input type="submit">
+
+</form>
+
+<a href="{% url 'index' %}">Back to Company LIst</a>
+
+{% endblock %}

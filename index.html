@@ -1,0 +1,18 @@
+ {% extends "learnproject/layout.html" %}
+
+ {% block body %}
+ <h1>Companies</h1>>
+ <ul>
+
+   {% for company in companies %}
+
+   <li>
+
+     <a href="{% url 'company' company.id %}">
+        Company {{ company.id }}: {{ company.name }} , {{ company.description }}
+     </a>
+
+   </li>
+
+ </ul>
+ {% endblock %}
